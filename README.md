@@ -3,7 +3,7 @@
 >
 > 燭龍博客：www.rick1999.top
 >
-> 燭龍工作室: www.zhulong1999.github.io
+> 燭龍工作室: https://zhulong1999.github.io/
 
 ## 许可协议
 
