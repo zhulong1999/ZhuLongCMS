@@ -91,8 +91,8 @@ class Index extends Controller
                   Db::execute($value->sql);
                 }
                 User::inst($admin);
-                return view('/instal__from');
                 Db::commit();//提交事务
+                return view('/instal__from');
             }catch (Exception $e){
                 Db::rollback();
                 $code = $e->getCode();
