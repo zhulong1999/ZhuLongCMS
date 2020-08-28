@@ -1,2 +1,2 @@
 # ZhuLongCMS
-烛龙CMS
+使用ThinkPHP5开发的一款轻量级企业CMS后台管理系统可供个人或企业使用
