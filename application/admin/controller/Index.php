@@ -33,6 +33,9 @@ class Index extends Common
             $data['site_logo'] = trim($req['logo']);
             $data['site_keywords'] = trim($req['keywords']);
             $data['site_description'] = trim($req['description']);
+            $data['put_id'] = session('admin')['mid'];
+            $data['put_name'] = session('admin')['user'];
+            $data['put_time'] = time();
             $result = Site::inset($data);
             if ($result && $result >= 1){
                 $this->success('配置成功');
@@ -66,6 +69,9 @@ class Index extends Common
             $data['company_wechat'] = trim($req['wechat']);
             $data['company_email'] = trim($req['email']);
             $data['company_address'] = trim($req['address']);
+            $data['put_id'] = session('admin')['mid'];
+            $data['put_name'] = session('admin')['user'];
+            $data['put_time'] = time();
             $result = Site::inset($data);
             if ($result && $result >= 1){
                 $this->success('配置成功');
@@ -713,6 +719,10 @@ class Index extends Common
     public function system()
     {
         return view('/system');
+    }
+    public function log()
+    {
+        return view('/log');
     }
 
 }
