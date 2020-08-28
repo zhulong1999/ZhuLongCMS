@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html class="x-admin-sm">
+    
+    <head>
+        <meta charset="UTF-8">
+        <title>欢迎页面-X-admin2.2</title>
+        <meta name="renderer" content="webkit">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
+        <link rel="stylesheet" href="__STATIC__/admin/css/font.css">
+        <link rel="stylesheet" href="__STATIC__/admin/css/xadmin.css">
+        <script src="__STATIC__/admin/lib/layui/layui.js" charset="utf-8"></script>
+        <script type="text/javascript" src="__STATIC__/admin/js/xadmin.js"></script>
+    </head>
+    <style>
+        table{
+            table-layout: fixed;
+        }
+
+        td{
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+    </style>
+    <body>
+        <div class="x-nav">
+            <span class="layui-breadcrumb">
+                <a href="">首页</a>
+                <a href="">文章管理</a>
+                <a>
+                    <cite>文章列表</cite></a>
+            </span>
+            <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" onclick="location.href='{$url}'" title="刷新">
+                <i class="layui-icon layui-icon-refresh" style="line-height:30px"></i>
+            </a>
+        </div>
+        <div class="layui-fluid">
+            <div class="layui-row layui-col-space15">
+                <div class="layui-col-md12">
+                    <div class="layui-card">
+                        <div class="layui-card-body ">
+                            <form class="layui-form layui-col-space5" action="" method="get">
+                                <div class="layui-input-inline layui-show-xs-block">
+                                    <input type="text" name="info" placeholder="请输入文章标题" autocomplete="off" class="layui-input" value="{$title}"></div>
+                                <div class="layui-input-inline layui-show-xs-block">
+                                    <button class="layui-btn" lay-submit="" lay-filter="sreach">
+                                        <i class="layui-icon">&#xe615;</i></button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="layui-card-header">
+                            <button class="layui-btn layui-btn-danger" onclick="delAll()">
+                                <i class="layui-icon"></i>批量删除</button>
+
+                        </div>
+                        <div class="layui-card-body ">
+                            <table class="layui-table layui-form">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            <input type="checkbox" name="" lay-skin="primary" class="check_all" lay-filter="check_all">
+                                        </th>
+                                        <th>aid</th>
+                                        <th>文章标题</th>
+                                        <th>文章栏目</th>
+                                        <th>文章关键字</th>
+                                        <th>文章描述</th>
+                                        <th>文章排序</th>
+                                        <th>录入人</th>
+                                        <th>录入时间</th>
+                                        <th>状态</th>
+                                        <th width="150">操作</th></tr>
+                                </thead>
+                                <tbody>
+                                    {volist name='list' id='vo'}
+                                    <tr>
+                                        <td>
+                                            <input type="checkbox" name="" lay-skin="primary" class="check_box" lay-filter='check_box' data-aid="{$vo.aid}">
+                                        </td>
+                                        <td>{$vo.aid}</td>
+                                        <td>{$vo.title}</td>
+                                        <td>{$vo.type_title}</td>
+                                        <td>{$vo.keywords}</td>
+                                        <td>{$vo.description}</td>
+                                        <td><input type="text" class="layui-input x-sort" name="order" value="{$vo.sort}"  onblur="sort('{$vo.aid}',$(this))"></td>
+                                        <td>{$vo.put_name}</td>
+                                        <td title="{:date('Y-m-d H:i:s',$vo.put_time)}">{:date('Y-m-d H:i:s',$vo.put_time)}</td>
+                                        <td>
+                                            <input type="checkbox" lay-filter="switch" class="switch" name="switch"  lay-text="开启|停用" value="{$vo.aid},{$vo.isdelete}" lay-skin="switch" {if condition="$vo.isdelete == 1"} checked {/if}>
+                                        </td>
+                                        <td >
+                                            <button class="layui-btn layui-btn layui-btn-xs"  onclick="xadmin.open('文章编辑','{:url("Index/article_alter")}?aid={$vo.aid}')" ><i class="layui-icon">&#xe642;</i>编辑</button>
+                                            <button class="layui-btn-danger layui-btn layui-btn-xs"  onclick="article_del(this,'{$vo.aid}')" href="javascript:;" ><i class="layui-icon">&#xe640;</i>删除</button>
+                                        </td>
+                                    </tr>
+                                    {/volist}
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="layui-card-body ">
+                            <div class="page">
+                             {$page}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script>layui.use(['laydate', 'form'],
+        function() {
+            var form = layui.form;
+            //全选
+            form.on("checkbox(check_all)",function(data){
+                $('.check_box').each(function(index,item){
+                    item.checked = data.elem.checked;
+                    // console.log(item.checked);
+                });
+                form.render('checkbox');
+            });
+            //开关
+            form.on("switch(switch)",function(data){
+                var data = data.value.split(',');
+                var arr = [parseInt(data[0]),data[1]==1?0:1];
+                $(this).val(arr[0]+','+arr[1]);
+                $.post("{:url('Index/article_alter_status')}",{data:data},function(msg){
+                    if (msg.status == 200){
+                        layer.msg(msg.message, {icon: 1});
+                    }else {
+                        layer.msg(msg.message, {icon: 2});
+                    }
+                })
+            });
+            form.render();
+        });
+
+    /*文章-删除*/
+    function article_del(obj,id){
+        layer.confirm('确认要删除吗？',{icon:3},function(index){
+            $.post("{:url('Index/article_del')}",{aid:id},function(msg){
+                if (msg.status == 200){
+                    //发异步删除数据
+                    $(obj).parents("tr").remove();
+                    layer.msg(msg.message,{icon:1,time:1000});
+                }else {
+                    layer.msg(msg.message,{icon:2,time:1000});
+                }
+
+            });
+
+        });
+    }
+    //批量删除
+    function delAll() {
+        var aid = [];
+        $('.check_box').each(function (index, item) {
+            if (item.checked) {
+                aid.push($(this).attr('data-aid'));
+            }
+        });
+        layer.alert("确定删除吗？", {icon: 2}, function () {
+            layer.load();
+            $.ajax({
+                type:"post",
+                url:"{:url('Index/article_del_all')}",
+                data:{
+                    aid:aid,
+                },
+                success:function(msg){
+                    if (msg.status == 200) {
+                        layer.closeAll('loading');
+                        layer.msg(msg.message, {icon: 1});
+                        setTimeout(function () {
+                            location.reload()
+                        }, 1000)
+                    }else{
+                        layer.closeAll('loading');
+                        layer.msg(msg.message, {icon: 1});
+                    }
+                },
+                error:function(err){
+                    layer.closeAll('loading');
+                    layer.msg("服务器错误", {icon: 2});
+
+                }
+            });
+        });
+    }
+    //修改排序
+    function sort(aid,obj)
+    {
+        $.post("{:url('Index/article_alter_sort')}",{aid:aid,sort:obj.val()},function (msg) {
+            if (msg.status == 200) {
+                layer.msg(msg.message, {icon: 1});
+            }
+        })
+    }
+
+    </script>
+
+</html>

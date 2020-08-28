@@ -13,8 +13,6 @@ class Common extends Controller
 {
     public function _initialize()
     {
-//        dump($_SERVER);
-
         $is_login = Session::has('admin');
         //判断是否登录
         if (!$is_login){
@@ -23,6 +21,10 @@ class Common extends Controller
 
     }
 
+    /**
+     * 文件上传
+     * @return array
+     */
     public function uploads()
     {
 
@@ -41,5 +43,26 @@ class Common extends Controller
             }
         }
         return $json;
+    }
+
+    /**
+     * 富文本文件上传
+     * @return array
+     */
+    public function tinyUploads()
+    {
+        $json = array();
+        $file = request()->file('file');
+        if ($file){
+            $info = $file->move(ROOT_PATH.'public/'.DS.'uploads');
+            if ($info){
+                $json =  array(
+                    'location'=>config('site_url').'/uploads/'.$info->getSaveName()
+                );
+            }else{
+                $this->error($file->getError());
+            }
+        }
+        return json_encode($json);
     }
 }

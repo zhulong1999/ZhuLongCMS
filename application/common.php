@@ -27,3 +27,42 @@ function ajax($status,$message,$data=[])
         "data"=>$data,
     );
 }
+
+/**
+ * 栏目分类
+ * @param $type
+ * @return string
+ */
+function column_type($type)
+{
+    switch ($type)
+    {
+        case 1:
+            $str = '内容页';
+            break;
+        case 2:
+            $str = '列表页';
+            break;
+        case 3:
+            $str = '图片列表页';
+            break;
+        default:
+            $str = '暂无分类';
+    }
+    return $str;
+}
+
+/**
+ * PHP扩展是否开启
+ * @param $ext
+ * @return string
+ */
+function is_open($ext)
+{
+    if (extension_loaded($ext)){
+        return 'yes';
+    }else{
+        return 'on';
+    }
+}
+

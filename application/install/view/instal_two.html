@@ -1,0 +1,185 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>安装程序 -燭龍工作室安装</title>
+<link href="__STATIC__/install/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="__STATIC__/install/js/jquery.js"></script>
+</head>
+
+<body>
+
+<div class="top">
+	<div class="top-logo">
+	</div>
+	<div class="top-link">
+		<ul>
+            <li><a href="http://www.rick1999.top" target="_blank">燭龍博客</a></li>
+            <li><a href="tencent://message/?uin=1207139760" target="_blank">帮助</a></li>
+		</ul>
+	</div>
+	<div class="top-version">
+		<!-- 版本信息 -->
+		<h2>燭龍CMS 1.0</h2>
+	</div>
+</div>
+
+<div class="main">
+	<div class="pleft">
+		<dl class="setpbox t1">
+			<dt>安装步骤</dt>
+			<dd>
+				<ul>
+					<li class="succeed">许可协议</li>
+					<li class="now">环境检测</li>
+					<li >参数配置</li>
+					<li>正在安装</li>
+					<li>安装完成</li>
+				</ul>
+			</dd>
+		</dl>
+	</div>
+
+<div class="pright">
+  <div class"enter_lf">
+   <div class="Envin_lf">
+      <div class="menter_lf"><span>服务器信息</span></div>
+      <div class="menter_table_lf">
+      <table width="1000" border="0" cellspacing="0" cellpadding="0" class="tabletable">
+        <thead>
+            <tr>
+              <th>参数</th>
+              <th>值</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+              <td>服务器域名</td>
+              <td style=" color:#999;">{$_SERVER['HTTP_HOST']}</td>
+            </tr>
+            <tr>
+              <td>服务器操作系统</td>
+              <td style=" color:#999;">{:PHP_OS}</td>
+            </tr>
+            <tr>
+              <td>服务器版本</td>
+              <td style="color:#999;">{$_SERVER['SERVER_SOFTWARE']}</td>
+            </tr>
+            <tr>
+              <td>PHP版本</td>
+              <td style="color:#999;">{:PHP_VERSION}</td>
+            </tr>
+            <tr>
+              <td>系统安装目录</td>
+              <td style=" color:#999;">{$_SERVER['DOCUMENT_ROOT']}</td>
+            </tr>
+        </tbody>
+      </table>
+
+      </div>
+</div>
+<div class="Envin_lf" >
+      <div class="menter_lf"><span>系统环境检测</span></div>
+      <div class="menter_table_lf">
+      <table width="1000" border="0" cellspacing="0" cellpadding="0" class="tabletable">
+        <thead>
+            <tr>
+              <th>需要开启扩展</th>
+              <th>是否开启</th>
+              <th>扩展简介与作用</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+              <td>curl</td>
+              <td>{:is_open('curl')}</td>
+              <td>不开启将无法进行POST或GET请求</td>
+            </tr>
+            <tr>
+              <td>gd2</td>
+              <td>{:is_open('gd2')}</td>
+              <td>不支持将导致与图片相关的大多数功能无法使用或引发警告</td>
+            </tr>
+
+             <tr>
+              <td>MySQL</td>
+              <td>{:is_open('MySQL')}</td>
+              <td>不开启将无法使用MySQL数据库</td>
+            </tr>
+            <tr>
+              <td>mysqli</td>
+              <td>{:is_open('mysqli')}</td>
+              <td>不开启将无法使用MySQLI函数库</td>
+            </tr>
+            <tr>
+                <td>mbstring</td>
+                <td>{:is_open('mbstring')}</td>
+                <td>不开启将无法使用字符串相关函数</td>
+            </tr>
+            <tr>
+                <td>fileinfo</td>
+                <td>{:is_open('fileinfo')}</td>
+                <td>不开启将无法获得文件的一些信息</td>
+            </tr>
+            <tr>
+                <td>openssl</td>
+                <td>{:is_open('openssl')}</td>
+                <td>用于数据加密之类</td>
+            </tr>
+
+        </tbody>
+      </table>
+      </div>
+</div>
+<div class="Envin_lf" style="margin-top: 70px;">
+      <div class="menter_lf"><span>目录权限检测</span></div>
+      <div class="menter_table_lf">
+      <table width="1000" border="0" cellspacing="0" cellpadding="0" class="tabletable">
+        <thead>
+            <tr>
+              <th>目录名</th>
+              <th>读取权限</th>
+              <th>写入权限</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+              <td>/</td>
+              <td>[/]读</td>
+              <td>[/]写</td>
+            </tr>
+            <tr>
+              <td>/application/*</td>
+              <td>[/]读</td>
+              <td>[/]写</td>
+            </tr>
+            <tr>
+              <td>/public/*</td>
+              <td>[/]读</td>
+              <td>[/]写</td>
+            </tr>
+             <tr>
+              <td>/thinkphp/*</td>
+              <td>[/]读</td>
+              <td>[/]写</td>
+            </tr>
+
+        </tbody>
+      </table>
+
+      </div>
+</div>
+    <div class="menter_btn_lf"></div>
+    <div class="menter_btn_a_lf">
+           <a href="{:url('Index/install_three')}"><input name="" type="button" class="menter_btn_a_a_lf" value="继续"></a>
+           <a href="javascript:history.back();"><input name="" type="button" class="menter_btn_a_a_lf" value="后退"></a>
+           
+    </div>
+</div>
+
+
+</div>
+<div style="text-align:center;">
+</div>
+</body>
+</html>

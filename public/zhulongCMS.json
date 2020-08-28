@@ -1,0 +1,40 @@
+[
+	{
+	"sid":1,
+	"sql":"CREATE TABLE `cms_access` (`id` bigint(20) NOT NULL AUTO_INCREMENT,`ip` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'ip',`num` int(11) DEFAULT NULL COMMENT '访问次数',`view` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '访问视图',`time` int(11) DEFAULT NULL COMMENT '访问时间',`isdelete` int(11) DEFAULT '1' COMMENT '0删除1正常',PRIMARY KEY (`id`)) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='访问表';"
+	},
+	{
+	"sid":2,
+	"sql":"CREATE TABLE `cms_admin` ( `mid` bigint(20) NOT NULL AUTO_INCREMENT, `user` varchar(50) COLLATE utf8_unicode_ci NOT NULL COMMENT '后台账号', `pass` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '后台密码', `num` int(11) DEFAULT NULL COMMENT '登录次数', `time` int(11) DEFAULT NULL COMMENT '最后登录', `ip` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '登录ip', `isdelete` int(11) DEFAULT '1' COMMENT '0冻结1正常2删除', PRIMARY KEY (`mid`) ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='管理员表';"
+	},
+	{
+	"sid":3,
+	"sql":"CREATE TABLE `cms_article` ( `aid` bigint(20) NOT NULL AUTO_INCREMENT, `title` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '文章标题', `parentid` int(11) DEFAULT '0' COMMENT '文章父栏目id', `typeid` int(11) DEFAULT NULL COMMENT '文章子栏目id', `type_title` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '文章子栏目名称', `picture` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '文章首图', `sort` int(11) DEFAULT NULL COMMENT '文章排序', `keywords` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '文章关键字', `description` varchar(500) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '文章描述', `content` text COLLATE utf8_unicode_ci COMMENT '文章内容', `put_id` int(11) DEFAULT NULL COMMENT '录入人id', `put_name` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '录入人', `put_time` int(11) DEFAULT NULL COMMENT '录入时间', `isdelete` int(11) DEFAULT '1' COMMENT '0冻结1正常2删除', PRIMARY KEY (`aid`) ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='文章表';"
+	},
+	{
+	"sid":4,
+	"sql":"CREATE TABLE `cms_column` ( `cid` int(11) NOT NULL AUTO_INCREMENT, `parentid` int(11) DEFAULT '0' COMMENT '父级id 1父级', `title` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '栏目标题', `type` int(11) DEFAULT '0' COMMENT '栏目类型 1内容页2列表页3图片列表页', `keywords` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '栏目关键字', `description` varchar(500) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '栏目描述', `sort` int(11) DEFAULT NULL COMMENT '栏目排序', `put_id` int(11) DEFAULT NULL COMMENT '录入人id', `put_name` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '录入人', `put_time` int(11) DEFAULT NULL COMMENT '录入时间', `isdelete` int(11) DEFAULT '1' COMMENT '0冻结1正常2删除', PRIMARY KEY (`cid`) ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='栏目表';"
+	},
+	{
+	"sid":5,
+	"sql":"CREATE TABLE `cms_message` ( `mid` bigint(20) NOT NULL AUTO_INCREMENT, `ip` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL, `name` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '留言名字', `phone` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '留言电话号码', `message` text COLLATE utf8_unicode_ci COMMENT '留言信息', `address` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '留言地址', `sort` int(11) DEFAULT NULL COMMENT '排序', `time` int(11) DEFAULT NULL COMMENT '留言时间', `isdelete` int(11) DEFAULT '1' COMMENT '0删除1正常', PRIMARY KEY (`mid`) ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='留言表';"
+	},
+	{
+	"sid":6,
+	"sql":"CREATE TABLE `cms_other` ( `oid` bigint(20) NOT NULL AUTO_INCREMENT, `type` int(11) DEFAULT '1' COMMENT '1轮播图2友情链接', `title` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '标题', `url` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '链接', `picture` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '轮播图', `sort` int(11) DEFAULT NULL COMMENT '排序', `put_id` int(11) DEFAULT NULL COMMENT '录入人id', `put_name` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '录入人', `put_time` int(11) DEFAULT NULL COMMENT '录入时间', `isdelete` int(11) DEFAULT '1' COMMENT '0删除1正常', PRIMARY KEY (`oid`) ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='杂项表 友情链接or轮播图';"
+	},
+	{
+	"sid":7,
+	"sql":"CREATE TABLE `cms_site` ( `cid` int(11) DEFAULT NULL, `site_name` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '站点名称', `site_logo` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '站点logo', `site_keywords` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '站点关键词', `site_description` varchar(500) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '站点描述', `company_name` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '公司名称', `company_info` text COLLATE utf8_unicode_ci COMMENT '公司信息', `company_code` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '公司邮政编码', `company_people` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '公司联系人', `company_qq` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '公司qq', `company_phone` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '公司电话号码', `company_fax` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '公司传真', `company_wechat` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '公司微信', `company_email` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '公司邮箱', `company_address` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '公司地址', `put_id` int(11) DEFAULT NULL COMMENT '录入人id', `put_name` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '录入人name', `put_time` int(11) DEFAULT NULL COMMENT '录入人时间', `isdelete` int(11) DEFAULT '1' COMMENT '0删除1正常' ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='公司站点信息表'; "
+	}
+]
+
+
+
+
+
+
+
+
+
+

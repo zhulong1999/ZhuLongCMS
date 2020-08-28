@@ -23,7 +23,7 @@
             <div class="layui-row">
                 <form class="layui-form " method="post" action="">
                   <div class="layui-form-item">
-                      <label for="username" class="layui-form-label">
+                      <label for="name" class="layui-form-label">
                           <span class="x-red">*</span>公司名称
                       </label>
                       <div class="layui-input-block">
@@ -31,15 +31,15 @@
                       </div>
                   </div>
                     <div class="layui-form-item">
-                        <label for="L_email" class="layui-form-label">
+                        <label for="info" class="layui-form-label">
                             <span class="x-red">*</span>公司简介
                         </label>
                         <div class="layui-input-block">
-                            <textarea class="layui-input" style="height: 100px;resize: none" name="info">{$company.company_info}</textarea>
+                            <textarea class="layui-input" style="height: 100px;resize: none" name="info" id="info">{$company.company_info}</textarea>
                         </div>
                     </div>
                     <div class="layui-form-item">
-                        <label for="username" class="layui-form-label">
+                        <label for="code" class="layui-form-label">
                             <span class="x-red">*</span>邮政编码
                         </label>
                         <div class="layui-input-block">
@@ -47,7 +47,7 @@
                         </div>
                     </div>
                     <div class="layui-form-item">
-                        <label for="username" class="layui-form-label">
+                        <label for="people" class="layui-form-label">
                             <span class="x-red">*</span>联系人
                         </label>
                         <div class="layui-input-block">
@@ -55,7 +55,7 @@
                         </div>
                     </div>
                     <div class="layui-form-item">
-                        <label for="username" class="layui-form-label">
+                        <label for="qq" class="layui-form-label">
                             <span class="x-red">*</span>QQ
                         </label>
                         <div class="layui-input-block">
@@ -63,7 +63,7 @@
                         </div>
                     </div>
                     <div class="layui-form-item">
-                        <label for="username" class="layui-form-label">
+                        <label for="phone" class="layui-form-label">
                             <span class="x-red">*</span>电话号码
                         </label>
                         <div class="layui-input-block">
@@ -71,7 +71,7 @@
                         </div>
                     </div>
                     <div class="layui-form-item">
-                        <label for="username" class="layui-form-label">
+                        <label for="fax" class="layui-form-label">
                             <span class="x-red">*</span>传真号码
                         </label>
                         <div class="layui-input-block">
@@ -79,7 +79,7 @@
                         </div>
                     </div>
                     <div class="layui-form-item">
-                        <label for="username" class="layui-form-label">
+                        <label for="wechat" class="layui-form-label">
                             <span class="x-red">*</span>微信号码
                         </label>
                         <div class="layui-input-block">
@@ -87,7 +87,7 @@
                         </div>
                     </div>
                     <div class="layui-form-item">
-                        <label for="username" class="layui-form-label">
+                        <label for="email" class="layui-form-label">
                             <span class="x-red">*</span>电子邮箱
                         </label>
                         <div class="layui-input-block">
@@ -95,7 +95,7 @@
                         </div>
                     </div>
                     <div class="layui-form-item">
-                        <label for="username" class="layui-form-label">
+                        <label for="address" class="layui-form-label">
                             <span class="x-red">*</span>公司地址
                         </label>
                         <div class="layui-input-block">

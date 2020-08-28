@@ -23,7 +23,7 @@
             <div class="layui-row">
                 <form class="layui-form " method="post" action="{:url('Index/site')}">
                   <div class="layui-form-item">
-                      <label for="username" class="layui-form-label">
+                      <label for="name" class="layui-form-label">
                           <span class="x-red">*</span>站点名称
                       </label>
                       <div class="layui-input-block">
@@ -31,7 +31,7 @@
                       </div>
                   </div>
                   <div class="layui-form-item">
-                      <label for="phone" class="layui-form-label">
+                      <label for="logo" class="layui-form-label">
                           <span class="x-red">*</span>站点Logo
                       </label>
                       <div class="layui-input-block">
@@ -41,26 +41,26 @@
                               <div class="layui-hide" id="uploadDemoView">
                                   <hr>
                                   <img src="{$site.site_logo}" alt="上传成功后渲染" style="max-width: 196px">
-                                  <input type="hidden" name="logo" class="logo" value="{$site.site_logo}">
+                                  <input type="hidden" name="logo" class="logo" value="{$site.site_logo}" id="logo">
                               </div>
                           </div>
                       </div>
                   </div>
 
                   <div class="layui-form-item">
-                      <label for="L_email" class="layui-form-label">
+                      <label for="keywords" class="layui-form-label">
                           <span class="x-red">*</span>站点关键字
                       </label>
                       <div class="layui-input-block">
-                          <input type="text" id="L_email" name="keywords" required="" lay-verify="required" autocomplete="off" class="layui-input" value="{$site.site_keywords}">
+                          <input type="text" id="keywords" name="keywords" required="" lay-verify="required" autocomplete="off" class="layui-input" value="{$site.site_keywords}">
                       </div>
                   </div>
                     <div class="layui-form-item">
-                        <label for="L_email" class="layui-form-label">
+                        <label for="description" class="layui-form-label">
                             <span class="x-red">*</span>站点描述
                         </label>
                         <div class="layui-input-block">
-                            <textarea class="layui-input" style="height: 100px;resize: none" name="description">{$site.site_description}</textarea>
+                            <textarea class="layui-input" style="height: 100px;resize: none" name="description" id="description">{$site.site_description}</textarea>
                         </div>
                     </div>
                   <div class="layui-form-item">
