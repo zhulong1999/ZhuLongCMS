@@ -62,3 +62,116 @@
 - 访问当前URL/admin
 - 输入管理员账号 默（ 账号：admin 密码：admin123}
 - 点击登录
+
+# zhulongcms 数据字典
+
+### cms_access访问表
+
+| 字段名   | 数据类型     | 默认值 | 允许非空 | 自动递增 | 备注       |
+| -------- | ------------ | ------ | -------- | -------- | ---------- |
+| id       | bigint(20)   |        | NO       | 是       |            |
+| ip       | varchar(50)  |        | YES      |          | ip         |
+| num      | int(11)      |        | YES      |          | 访问次数   |
+| view     | varchar(100) |        | YES      |          | 访问视图   |
+| time     | int(11)      |        | YES      |          | 访问时间   |
+| isdelete | int(11)      | 1      | YES      |          | 0删除1正常 |
+
+### cms_admin管理员表
+
+| 字段名   | 数据类型     | 默认值 | 允许非空 | 自动递增 | 备注            |
+| -------- | ------------ | ------ | -------- | -------- | --------------- |
+| mid      | bigint(20)   |        | NO       | 是       |                 |
+| user     | varchar(50)  |        | NO       |          | 后台账号        |
+| pass     | varchar(200) |        | YES      |          | 后台密码        |
+| num      | int(11)      |        | YES      |          | 登录次数        |
+| time     | int(11)      |        | YES      |          | 最后登录        |
+| ip       | varchar(50)  |        | YES      |          | 登录ip          |
+| isdelete | int(11)      | 1      | YES      |          | 0冻结1正常2删除 |
+
+### cms_article文章表
+
+| 字段名      | 数据类型     | 默认值 | 允许非空 | 自动递增 | 备注            |
+| ----------- | ------------ | ------ | -------- | -------- | --------------- |
+| aid         | bigint(20)   |        | NO       | 是       |                 |
+| title       | varchar(50)  |        | YES      |          | 文章标题        |
+| parentid    | int(11)      | 0      | YES      |          | 文章父栏目id    |
+| typeid      | int(11)      |        | YES      |          | 文章子栏目id    |
+| type_title  | varchar(50)  |        | YES      |          | 文章子栏目名称  |
+| picture     | varchar(100) |        | YES      |          | 文章首图        |
+| sort        | int(11)      |        | YES      |          | 文章排序        |
+| keywords    | varchar(200) |        | YES      |          | 文章关键字      |
+| description | varchar(500) |        | YES      |          | 文章描述        |
+| content     | text         |        | YES      |          | 文章内容        |
+| put_id      | int(11)      |        | YES      |          | 录入人id        |
+| put_name    | varchar(20)  |        | YES      |          | 录入人          |
+| put_time    | int(11)      |        | YES      |          | 录入时间        |
+| isdelete    | int(11)      | 1      | YES      |          | 0冻结1正常2删除 |
+
+### cms_column栏目表
+
+| 字段名      | 数据类型     | 默认值 | 允许非空 | 自动递增 | 备注                               |
+| ----------- | ------------ | ------ | -------- | -------- | ---------------------------------- |
+| cid         | int(11)      |        | NO       | 是       |                                    |
+| parentid    | int(11)      | 0      | YES      |          | 父级id 1父级                       |
+| title       | varchar(20)  |        | YES      |          | 栏目标题                           |
+| type        | int(11)      | 0      | YES      |          | 栏目类型 1内容页2列表页3图片列表页 |
+| keywords    | varchar(100) |        | YES      |          | 栏目关键字                         |
+| description | varchar(500) |        | YES      |          | 栏目描述                           |
+| sort        | int(11)      |        | YES      |          | 栏目排序                           |
+| put_id      | int(11)      |        | YES      |          | 录入人id                           |
+| put_name    | varchar(20)  |        | YES      |          | 录入人                             |
+| put_time    | int(11)      |        | YES      |          | 录入时间                           |
+| isdelete    | int(11)      | 1      | YES      |          | 0冻结1正常2删除                    |
+
+### cms_message留言表
+
+| 字段名   | 数据类型     | 默认值 | 允许非空 | 自动递增 | 备注         |
+| -------- | ------------ | ------ | -------- | -------- | ------------ |
+| mid      | bigint(20)   |        | NO       | 是       |              |
+| ip       | varchar(50)  |        | YES      |          |              |
+| name     | varchar(100) |        | YES      |          | 留言名字     |
+| phone    | varchar(100) |        | YES      |          | 留言电话号码 |
+| message  | text         |        | YES      |          | 留言信息     |
+| address  | varchar(200) |        | YES      |          | 留言地址     |
+| sort     | int(11)      |        | YES      |          | 排序         |
+| time     | int(11)      |        | YES      |          | 留言时间     |
+| isdelete | int(11)      | 1      | YES      |          | 0删除1正常   |
+
+### cms_other杂项表 友情链接or轮播图
+
+| 字段名   | 数据类型     | 默认值 | 允许非空 | 自动递增 | 备注             |
+| -------- | ------------ | ------ | -------- | -------- | ---------------- |
+| oid      | bigint(20)   |        | NO       | 是       |                  |
+| type     | int(11)      | 1      | YES      |          | 1轮播图2友情链接 |
+| title    | varchar(100) |        | YES      |          | 标题             |
+| url      | varchar(200) |        | YES      |          | 链接             |
+| picture  | varchar(200) |        | YES      |          | 轮播图           |
+| sort     | int(11)      |        | YES      |          | 排序             |
+| put_id   | int(11)      |        | YES      |          | 录入人id         |
+| put_name | varchar(100) |        | YES      |          | 录入人           |
+| put_time | int(11)      |        | YES      |          | 录入时间         |
+| isdelete | int(11)      | 1      | YES      |          | 0删除1正常       |
+
+### cms_site公司站点信息表
+
+| 字段名           | 数据类型     | 默认值 | 允许非空 | 自动递增 | 备注         |
+| ---------------- | ------------ | ------ | -------- | -------- | ------------ |
+| cid              | int(11)      |        | YES      |          |              |
+| site_name        | varchar(100) |        | YES      |          | 站点名称     |
+| site_logo        | varchar(200) |        | YES      |          | 站点logo     |
+| site_keywords    | varchar(200) |        | YES      |          | 站点关键词   |
+| site_description | varchar(500) |        | YES      |          | 站点描述     |
+| company_name     | varchar(100) |        | YES      |          | 公司名称     |
+| company_info     | text         |        | YES      |          | 公司信息     |
+| company_code     | varchar(100) |        | YES      |          | 公司邮政编码 |
+| company_people   | varchar(50)  |        | YES      |          | 公司联系人   |
+| company_qq       | varchar(20)  |        | YES      |          | 公司qq       |
+| company_phone    | varchar(20)  |        | YES      |          | 公司电话号码 |
+| company_fax      | varchar(20)  |        | YES      |          | 公司传真     |
+| company_wechat   | varchar(50)  |        | YES      |          | 公司微信     |
+| company_email    | varchar(50)  |        | YES      |          | 公司邮箱     |
+| company_address  | varchar(200) |        | YES      |          | 公司地址     |
+| put_id           | int(11)      |        | YES      |          | 录入人id     |
+| put_name         | varchar(50)  |        | YES      |          | 录入人name   |
+| put_time         | int(11)      |        | YES      |          | 录入人时间   |
+| isdelete         | int(11)      | 1      | YES      |          | 0删除1正常   |
