@@ -26,7 +26,12 @@
 	{
 	"sid":7,
 	"sql":"CREATE TABLE `cms_site` ( `cid` int(11) DEFAULT NULL, `site_name` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '站点名称', `site_logo` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '站点logo', `site_keywords` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '站点关键词', `site_description` varchar(500) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '站点描述', `company_name` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '公司名称', `company_info` text COLLATE utf8_unicode_ci COMMENT '公司信息', `company_code` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '公司邮政编码', `company_people` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '公司联系人', `company_qq` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '公司qq', `company_phone` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '公司电话号码', `company_fax` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '公司传真', `company_wechat` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '公司微信', `company_email` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '公司邮箱', `company_address` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '公司地址', `put_id` int(11) DEFAULT NULL COMMENT '录入人id', `put_name` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '录入人name', `put_time` int(11) DEFAULT NULL COMMENT '录入人时间', `isdelete` int(11) DEFAULT '1' COMMENT '0删除1正常' ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='公司站点信息表'; "
+	},
+	{
+	"sid":8,
+	"sql":"INSERT INTO `cms_site`(cid) VALUES (1000)"
 	}
+	
 ]
 
 
