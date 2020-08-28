@@ -3,7 +3,7 @@
 >
 > 燭龍博客：www.rick1999.top
 >
-> 燭龍工作室: www.zhulong1999.github.io
+> 燭龍工作室: https://zhulong1999.github.io/
 
 ## 许可协议
 
@@ -62,6 +62,7 @@
 - 访问当前URL/admin
 - 输入管理员账号 默（ 账号：admin 密码：admin123}
 - 点击登录
+<<<<<<< HEAD
 
 # zhulongcms 数据字典
 
@@ -175,3 +176,5 @@
 | put_name         | varchar(50)  |        | YES      |          | 录入人name   |
 | put_time         | int(11)      |        | YES      |          | 录入人时间   |
 | isdelete         | int(11)      | 1      | YES      |          | 0删除1正常   |
+=======
+>>>>>>> a62b7842e8ecb177b0691589ce04ff013ee49d8e
