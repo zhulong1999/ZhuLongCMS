@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    {Zl:type num='8'}
+        {$vo.title}--父
+    <br>
+        {Zl:type_son num='8' parentid='$vo["cid"]' }
+       ----- {$vo.title}--子
+        <br>
+        {/Zl:type_son}
+
+    {/Zl:type}
+
+{Zl:site name='site_name'/}
+    {Zl:site name='site_keywords'/}
+</body>
+</html>

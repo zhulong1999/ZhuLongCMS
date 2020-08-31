@@ -3,7 +3,7 @@
 >
 > 燭龍博客：www.rick1999.top
 >
-> 燭龍工作室: https://zhulong1999.github.io/
+> 燭龍工作室: www.zhulong1999.github.io
 
 ## 许可协议
 
@@ -62,7 +62,6 @@
 - 访问当前URL/admin
 - 输入管理员账号 默（ 账号：admin 密码：admin123}
 - 点击登录
-<<<<<<< HEAD
 
 # zhulongcms 数据字典
 
@@ -176,5 +175,35 @@
 | put_name         | varchar(50)  |        | YES      |          | 录入人name   |
 | put_time         | int(11)      |        | YES      |          | 录入人时间   |
 | isdelete         | int(11)      | 1      | YES      |          | 0删除1正常   |
-=======
->>>>>>> a62b7842e8ecb177b0691589ce04ff013ee49d8e
+
+## ZhuLongCMS教程
+
+#### 站点标签
+
+```php+HTML
+//站点标签  格式 *name 必填
+//站点标题  列如：site_name '标题'  site_keywords '站点关键字'
+//ps：name的参数 可更具站点表来查询相关的字段
+{Zl:site  name='site_name'/}
+```
+
+#### 栏目标签
+
+```
+//父栏目标签 格式 {Zl:type num='8'}{/zl:type}  *num必填 想要查询多少条栏目
+//子栏目标签 格式 {Zl:type_son num='8' parentid='$vo["cid"]' }
+//*num parentid 必填 parentid 父栏目id 格式 {$vo["cid"]}来填写
+//实列
+{Zl:type num='8'}
+		//titlt 根据栏目表来写
+        {$vo.title}--父
+    <br>
+    //遍历子栏目
+        {Zl:type_son num='8' parentid='$vo["cid"]' }
+       ----- {$vo.title}--子
+        <br>
+        {/Zl:type_son}
+    {/Zl:type}
+
+```
+
